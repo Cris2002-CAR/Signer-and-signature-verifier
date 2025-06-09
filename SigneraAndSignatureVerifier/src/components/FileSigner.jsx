@@ -51,7 +51,7 @@ export default function FileSigner() {
   }
 
   return (
-    <div>
+    <div style={{ width: '100%', maxWidth: 500 }}>
       <h2>Firmar Archivo</h2>
       <form onSubmit={handleSign}>
         <label>
@@ -62,7 +62,6 @@ export default function FileSigner() {
             onChange={e => setFile(e.target.files[0])}
           />
         </label>
-        <br />
         <label>
           Archivo de clave privada (.enc):
           <input
@@ -71,7 +70,6 @@ export default function FileSigner() {
             onChange={e => setPrivKeyFile(e.target.files[0])}
           />
         </label>
-        <br />
         <label>
           Contraseña de la clave privada:
           <input
@@ -79,16 +77,16 @@ export default function FileSigner() {
             value={password}
             required
             onChange={e => setPassword(e.target.value)}
+            placeholder="Contraseña"
           />
         </label>
-        <br />
         <button type="submit" disabled={signing}>
           {signing ? 'Firmando...' : 'Firmar'}
         </button>
       </form>
       {signature && (
-        <div>
-          <p>Firma generada:</p>
+        <div style={{ marginTop: 24 }}>
+          <p style={{ fontWeight: 500, color: '#b71c1c' }}>Firma generada:</p>
           <textarea value={signature} readOnly rows={4} cols={60} />
           <br />
           <button onClick={() => download(signature, 'signature.txt')}>

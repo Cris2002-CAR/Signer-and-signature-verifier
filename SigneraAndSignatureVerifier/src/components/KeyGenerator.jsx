@@ -39,7 +39,7 @@ export default function KeyGenerator() {
   }
 
   return (
-    <div>
+    <div style={{ width: '100%', maxWidth: 500 }}>
       <h2>Generar Claves RSA</h2>
       <form onSubmit={handleGenerate}>
         <label>
@@ -49,6 +49,7 @@ export default function KeyGenerator() {
             value={password}
             required
             onChange={e => setPassword(e.target.value)}
+            placeholder="Contraseña segura"
           />
         </label>
         <button type="submit" disabled={generating}>
@@ -56,14 +57,14 @@ export default function KeyGenerator() {
         </button>
       </form>
       {publicKeyPEM && (
-        <div>
+        <div style={{ marginTop: 24 }}>
           <button onClick={() => download(publicKeyPEM, 'public_key.pem')}>
             Descargar clave pública
           </button>
         </div>
       )}
       {privateKeyEncrypted && (
-        <div>
+        <div style={{ marginTop: 12 }}>
           <button onClick={() => download(privateKeyEncrypted, 'private_key.enc')}>
             Descargar clave privada protegida
           </button>

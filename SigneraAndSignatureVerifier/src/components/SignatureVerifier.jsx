@@ -33,7 +33,7 @@ export default function SignatureVerifier() {
   }
 
   return (
-    <div>
+    <div style={{ width: '100%', maxWidth: 500 }}>
       <h2>Verificar Firma</h2>
       <form onSubmit={handleVerify}>
         <label>
@@ -44,7 +44,6 @@ export default function SignatureVerifier() {
             onChange={e => setFile(e.target.files[0])}
           />
         </label>
-        <br />
         <label>
           Archivo de firma:
           <input
@@ -53,7 +52,6 @@ export default function SignatureVerifier() {
             onChange={e => setSignatureFile(e.target.files[0])}
           />
         </label>
-        <br />
         <label>
           Archivo de clave pública (.pem):
           <input
@@ -62,14 +60,17 @@ export default function SignatureVerifier() {
             onChange={e => setPubKeyFile(e.target.files[0])}
           />
         </label>
-        <br />
         <button type="submit" disabled={verifying}>
           {verifying ? 'Verificando...' : 'Verificar'}
         </button>
       </form>
       {result !== null && (
-        <div>
-          <p>
+        <div style={{ marginTop: 24 }}>
+          <p style={{
+            fontWeight: 600,
+            color: result ? '#388e3c' : '#d32f2f',
+            fontSize: '1.2em'
+          }}>
             {result
               ? 'La firma es válida ✅'
               : 'La firma NO es válida ❌'}
